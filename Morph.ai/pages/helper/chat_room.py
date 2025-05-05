@@ -17,14 +17,14 @@ from pages.helper.summary_manager import (
 )
 
 # Function to handle AI responses with context
-def response(user_input, model_name, context=None, current_page=None):
+def response(user_input, roles, model_name, context=None, current_page=None):
     """
     Get response from Ollama API with optional context
     """
     # Add context to prompt if available
     prompt = user_input
     if context:
-        prompt = f"{context}\n\nUser: {user_input}\n\nAssistant:"
+        prompt = f" Ai Roles : {roles}\n\ncontext : {context}\n\nUser: {user_input}\n\nAssistant:"
     
     # Analyze input for potential recommendations (only for sidekick)
     recommendation = ""
@@ -93,7 +93,7 @@ def display_chat_room(title, model_name, session_state_key):
             context = get_context_for_conflict_resolution()
         
         # Generate initial response
-        initial_response = response("hello", model_name, context, current_page=get_page_type(session_state_key))
+        initial_response = response("hello", title, model_name, context, current_page=get_page_type(session_state_key))
         st.session_state[session_state_key] = [{"role": "assistant", "content": initial_response}]
     
     if f"{session_state_key}_thinking" not in st.session_state:
@@ -177,7 +177,7 @@ def display_chat_room(title, model_name, session_state_key):
                     current_page = get_page_type(session_state_key)
                     
                     # Generate response with context
-                    ai_response = response(last_user_msg, model_name, context, current_page)
+                    ai_response = response(last_user_msg, title, model_name, context, current_page)
                     st.markdown(ai_response)
 
             st.session_state[session_state_key].append({"role": "assistant", "content": ai_response})
