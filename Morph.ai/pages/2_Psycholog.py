@@ -48,15 +48,6 @@ A confidential space to discuss work-related stress and mental well-being. I can
 Everything shared here is confidential.
 """)
 
-# Add navigation buttons to other tools
-st.markdown("""
-<div class="navigation">
-    <a class="nav-button" href="./Sidekick">Go to Sidekick</a>
-    <a class="nav-button" href="./Conflic_Resolution">Go to Conflict Resolution</a>
-    <a class="nav-button" href="./Summarizer">Go to Summarizer</a>
-</div>
-""", unsafe_allow_html=True)
-
 # Display employees flagged for psychological support
 with st.sidebar:
     st.subheader("Flagged Employees")

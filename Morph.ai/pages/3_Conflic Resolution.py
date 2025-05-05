@@ -48,15 +48,6 @@ A mediator to help navigate workplace conflicts and improve team dynamics. I can
 Use this space to discuss team challenges in a safe environment.
 """)
 
-# Add navigation buttons to other tools
-st.markdown("""
-<div class="navigation">
-    <a class="nav-button" href="./Sidekick">Go to Sidekick</a>
-    <a class="nav-button" href="./Psycholog">Go to Psycholog</a>
-    <a class="nav-button" href="./Summarizer">Go to Summarizer</a>
-</div>
-""", unsafe_allow_html=True)
-
 # Display employees flagged for conflict resolution
 with st.sidebar:
     st.subheader("Flagged Employees")
